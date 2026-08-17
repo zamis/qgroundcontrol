@@ -1,0 +1,14 @@
+FROM qgc-ubuntu-docker
+
+RUN mkdir -p /project/source /project/build
+WORKDIR /project/source
+COPY . .
+WORKDIR /project/source
+
+# ---------- Build + install ----------
+RUN qt-cmake -S /project/source -B /project/build -G Ninja -DCMAKE_BUILD_TYPE=Release
+RUN cmake --build /project/build --target all --parallel
+# RUN cmake --install /project/build --config Release
+CMD ["bash", "-lc", "cmake --install /project/build --config Release && sleep 9999s"]
+
+# CMD ["bash", "-lc", "sleep 9999s"]

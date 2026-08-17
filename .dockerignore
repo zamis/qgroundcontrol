@@ -8,6 +8,7 @@
 .gitattributes
 .gitmodules
 .mailmap
+.scripts
 
 # GitHub (except build-config.json needed by Dockerfile)
 .github/
